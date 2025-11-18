@@ -853,6 +853,19 @@
                 width: 100%;
             }
         }
+        .project-image-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px; /* optional, makes image corners rounded */
+}
+
+.project-image {
+    width: 100%;
+    height: auto; /* maintains aspect ratio */
+    display: block;
+    object-fit: cover; /* fills container nicely without stretching */
+}
+
     </style>
 </head>
 
@@ -919,6 +932,12 @@
         <p>2020 - 2023</p>
         <p>Graduated with honors, focusing on software development and database management.</p>
     </div>
+    <div class="timeline-item" data-aos="fade-right">
+    <h3>MCA - Master in Computer Application</h3>
+    <p>2023 - 2025</p>
+    <p>Specialized in advanced software development, cloud computing, and enterprise applications.</p>
+</div>
+
 
     <div class="timeline-item" data-aos="fade-left">
         <h3>ASP.NET Developer</h3>
@@ -962,6 +981,9 @@
 <h2 id="projects" class="section-title" data-aos="fade-up">Projects</h2>
 <div class="project-container">
     <div class="project-card card-hover" data-aos="fade-right">
+        <div class="project-image-container">
+        <img src="images/school.jpg" alt="Gym Management System" class="project-image">
+    </div>
         <h3>School ERP</h3>
         <p>A comprehensive School Management System handling student data, fees, attendance, reports, and dashboard analytics.</p>
         <div class="project-tags">
@@ -973,6 +995,9 @@
     </div>
 
     <div class="project-card card-hover" data-aos="fade-up">
+        <div class="project-image-container">
+        <img src="images/invoice.jpg" alt="Gym Management System" class="project-image">
+    </div>
         <h3>Invoice System</h3>
         <p>Automated billing system with GST calculation, PDF generation, and multi-year reporting capabilities.</p>
         <div class="project-tags">
@@ -983,16 +1008,23 @@
         </div>
     </div>
 
-    <div class="project-card card-hover" data-aos="fade-left">
-        <h3>GM Factory System</h3>
-        <p>Factory management solution for tracking stock, salary processing, production monitoring, and reporting.</p>
-        <div class="project-tags">
-            <span>ASP.NET</span>
-            <span>C#</span>
-            <span>SQL Server</span>
-            <span>Chart.js</span>
-        </div>
+   <div class="project-card card-hover" data-aos="fade-left">
+    <div class="project-image-container">
+        <img src="images/gym.jpg" alt="Gym Management System" class="project-image">
     </div>
+    <h3>Gym Management System</h3>
+    <p>Comprehensive gym management solution for tracking memberships, attendance, workout schedules, trainer assignments, billing, and reporting. Includes user-friendly dashboards and automated notifications.</p>
+    <div class="project-tags">
+        <span>ASP.NET</span>
+        <span>C#</span>
+        <span>SQL Server</span>
+        <span>Bootstrap</span>
+        <span>JavaScript</span>
+    </div>
+</div>
+
+</div>
+
 </div>
 
 <!-- CONTACT -->
