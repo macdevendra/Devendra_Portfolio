@@ -1022,9 +1022,7 @@
     <!-- HERO -->
     <section id="home" class="hero">
         <div class="hero-content" data-aos="fade-up">
-            <div class="profile-container floating">
-                <img src="images/devendra.jpg" alt="profile">
-            </div>
+            
 
             <h1 data-aos="fade-up">Hello, I'm <span class="typing"></span></h1>
             <p data-aos="fade-up">ASP.NET Developer | 1 Year Experience</p>
@@ -1050,7 +1048,7 @@
                 <p>I'm passionate about creating efficient, scalable solutions that solve real-world problems. My approach combines technical expertise with a focus on user experience and business requirements.</p>
             </div>
             <div class="about-image" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Coding">
+                <img src="images/devendra.jpg" alt="profile">
             </div>
         </div>
 </div>
@@ -1181,13 +1179,29 @@
             </div>
         </div>
         
-        <form class="contact-form" data-aos="zoom-in">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="text" placeholder="Subject">
-            <textarea rows="5" placeholder="Your Message" required></textarea>
-            <button class="btn btn-animated">Send Message</button>
-        </form>
+     <form class="contact-form"
+      action="https://formsubmit.co/devendraodiya6198@gmail.com"
+      method="POST"
+      data-aos="zoom-in">
+
+    <!-- Disable CAPTCHA -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Email template format -->
+    <input type="hidden" name="_template" value="table">
+
+    <!-- After submit redirect (optional but recommended) -->
+    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="subject" placeholder="Subject">
+    <textarea rows="5" name="message" placeholder="Your Message" required></textarea>
+
+    <button type="submit" class="btn btn-animated">Send Message</button>
+</form>
+
+
     </div>
 </div>
     <!-- FOOTER -->
@@ -1205,7 +1219,7 @@
         </div>
     </footer>
 
-</header>
+
 <!-- AOS JS -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
@@ -1324,6 +1338,6 @@
         });
     });
 </script>
-
+</header>
 </body>
 </html>
