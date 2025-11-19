@@ -27,12 +27,18 @@
 
         :root {
             --primary: #7b68ee;
+            --primary-dark: #5a4bbf;
             --secondary: #6a5acd;
             --accent: #9370db;
             --dark: #121212;
+            --darker: #0a0a0a;
             --light: #f8f9fa;
+            --gray: #e9ecef;
             --card-bg: rgba(30, 30, 46, 0.8);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 15px 40px rgba(123, 104, 238, 0.2);
         }
 
         body {
@@ -40,13 +46,19 @@
             color: white;
             overflow-x: hidden;
             transition: var(--transition);
+            line-height: 1.6;
         }
 
         /* LIGHT MODE */
         body.light-mode {
             background: var(--light);
-            color: #222;
+            color: #333;
             --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        body.light-mode .card {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         /* Custom Scrollbar */
@@ -56,6 +68,10 @@
 
         ::-webkit-scrollbar-track {
             background: var(--dark);
+        }
+
+        body.light-mode ::-webkit-scrollbar-track {
+            background: var(--gray);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -69,9 +85,8 @@
             min-height: 100vh;
             background: linear-gradient(
                 135deg,
-                color-mix(in srgb, var(--secondary) 70%, black),
-                color-mix(in srgb, var(--primary) 70%, black),
-                color-mix(in srgb, var(--accent) 70%, black)
+                var(--darker),
+                var(--dark)
             );
             color: white;
             position: relative;
@@ -90,9 +105,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 10%;
+            padding: 25px 5%;
             position: relative;
             z-index: 10;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.8);
         }
 
         nav .logo {
@@ -101,6 +122,14 @@
             color: white;
             letter-spacing: 1px;
             position: relative;
+        }
+
+        body.light-mode nav .logo {
+            color: var(--dark);
+        }
+
+        nav .logo span {
+            color: var(--primary);
         }
 
         nav .logo::after {
@@ -131,6 +160,11 @@
             position: relative;
             padding: 5px 0;
             transition: var(--transition);
+            font-weight: 500;
+        }
+
+        body.light-mode nav ul li a {
+            color: var(--dark);
         }
 
         nav ul li a::after {
@@ -152,9 +186,22 @@
             width: 100%;
         }
 
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        body.light-mode .nav-toggle {
+            color: var(--dark);
+        }
+
         /* Dark Mode Button */
         .toggle-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             padding: 10px 16px;
             border-radius: 30px;
@@ -168,17 +215,30 @@
             gap: 8px;
         }
 
+        body.light-mode .toggle-btn {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--dark);
+        }
+
         .toggle-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
+        }
+
+        body.light-mode .toggle-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
         }
 
         /* HERO */
         .hero {
-            padding: 80px 10%;
+            padding: 80px 5%;
             text-align: center;
             position: relative;
             z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
         }
 
         .hero-content {
@@ -236,6 +296,7 @@
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 20px;
+            opacity: 0.9;
         }
 
         .btn {
@@ -253,6 +314,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
         }
 
         .btn::before {
@@ -273,7 +335,7 @@
 
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.3);
+            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.4);
         }
 
         /* SOCIAL ICONS */
@@ -322,7 +384,8 @@
 
         /* ABOUT */
         .about-container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -335,16 +398,16 @@
             line-height: 1.7;
             background: var(--card-bg);
             padding: 30px;
-            border-radius: 15px;
-            border: 1px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow);
             backdrop-filter: blur(10px);
             transition: var(--transition);
         }
 
         .about-text:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .about-image {
@@ -355,8 +418,8 @@
         .about-image img {
             width: 100%;
             max-width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
         }
 
@@ -366,7 +429,8 @@
 
         /* SKILLS */
         .skills-container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -379,11 +443,11 @@
         .skill-card {
             background: var(--card-bg);
             padding: 25px;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             text-align: center;
             font-weight: 600;
-            border: 1px solid var(--primary);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.1);
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -406,7 +470,7 @@
 
         .skill-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.3);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .skill-card i {
@@ -420,19 +484,22 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .project-card {
             background: var(--card-bg);
             padding: 30px;
-            border-radius: 15px;
-            border: 1px solid var(--primary);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card::after {
@@ -454,7 +521,7 @@
 
         .project-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .project-card h3 {
@@ -465,6 +532,25 @@
 
         .project-card p {
             margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-image-container {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
         }
 
         .project-tags {
@@ -483,7 +569,8 @@
 
         /* EDUCATION */
         .timeline {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
         }
@@ -503,11 +590,11 @@
         .timeline-item {
             background: var(--card-bg);
             padding: 25px;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             margin: 30px 0;
             width: calc(50% - 40px);
             position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
         }
 
@@ -540,12 +627,13 @@
 
         .timeline-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow-hover);
         }
 
         /* CONTACT */
         .contact-container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             gap: 40px;
@@ -566,16 +654,16 @@
         .contact-card {
             background: var(--card-bg);
             padding: 25px;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             margin-bottom: 20px;
-            border: 1px solid var(--primary);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.1);
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
         }
 
         .contact-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.2);
+            box-shadow: var(--box-shadow-hover);
         }
 
         .contact-card i {
@@ -591,9 +679,15 @@
             border: none;
             background: var(--card-bg);
             color: white;
-            border: 1px solid var(--primary);
+            border: 1px solid rgba(123, 104, 238, 0.3);
             transition: var(--transition);
             font-size: 1rem;
+        }
+
+        body.light-mode .contact-form input,
+        body.light-mode .contact-form textarea {
+            color: var(--dark);
+            background: white;
         }
 
         .contact-form input:focus,
@@ -668,13 +762,23 @@
 
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
-                gap: 20px;
+                flex-wrap: wrap;
             }
             
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .nav-toggle {
+                display: block;
             }
             
             .hero img {
@@ -695,7 +799,27 @@
             .project-container,
             .timeline,
             .contact-container {
-                width: 90%;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 5%;
+            }
+            
+            .hero-content {
+                padding: 0 10px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .project-card,
+            .skill-card,
+            .contact-card {
+                padding: 20px;
             }
         }
 
@@ -853,19 +977,6 @@
                 width: 100%;
             }
         }
-        .project-image-container {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 8px; /* optional, makes image corners rounded */
-}
-
-.project-image {
-    width: 100%;
-    height: auto; /* maintains aspect ratio */
-    display: block;
-    object-fit: cover; /* fills container nicely without stretching */
-}
-
     </style>
 </head>
 
@@ -877,7 +988,11 @@
     <nav data-aos="fade-down">
         <h2 class="logo">Devendra<span> Odiya</span></h2>
 
-        <ul>
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul id="navMenu">
             <li><a href="#home" data-aos="zoom-in">Home</a></li>
             <li><a href="#about" data-aos="zoom-in">About</a></li>
             <li><a href="#skills" data-aos="zoom-in">Skills</a></li>
@@ -900,9 +1015,7 @@
             <h1 data-aos="fade-up">Hello, I'm <span class="typing"></span></h1>
             <p data-aos="fade-up">ASP.NET Developer | 1 Year Experience</p>
 
-            <a href="document/Devendra Resume .pdf" target="_blank" class="btn btn-animated" data-aos="zoom-in">View Resume</a>
-
-
+            <a href="document/Devendra Resume .pdf" download class="btn btn-animated" data-aos="zoom-in">Download Resume</a>
 
             <div class="social" data-aos="fade-up">
                 <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -911,7 +1024,7 @@
             </div>
         </div>
     </section>
-</header>
+
 
 <!-- ABOUT -->
 <h2 id="about" class="section-title" data-aos="fade-up">About Me</h2>
@@ -934,11 +1047,10 @@
         <p>Graduated with honors, focusing on software development and database management.</p>
     </div>
     <div class="timeline-item" data-aos="fade-right">
-    <h3>MCA - Master in Computer Application</h3>
-    <p>2023 - 2025</p>
-    <p>Specialized in advanced software development, cloud computing, and enterprise applications.</p>
-</div>
-
+        <h3>MCA - Master in Computer Application</h3>
+        <p>2023 - 2025</p>
+        <p>Specialized in advanced software development, cloud computing, and enterprise applications.</p>
+    </div>
 
     <div class="timeline-item" data-aos="fade-left">
         <h3>ASP.NET Developer</h3>
@@ -983,8 +1095,8 @@
 <div class="project-container">
     <div class="project-card card-hover" data-aos="fade-right">
         <div class="project-image-container">
-        <img src="images/school.jpg" alt="Gym Management System" class="project-image">
-    </div>
+            <img src="images/school.jpg" alt="School ERP" class="project-image">
+        </div>
         <h3>School ERP</h3>
         <p>A comprehensive School Management System handling student data, fees, attendance, reports, and dashboard analytics.</p>
         <div class="project-tags">
@@ -997,8 +1109,8 @@
 
     <div class="project-card card-hover" data-aos="fade-up">
         <div class="project-image-container">
-        <img src="images/invoice.jpg" alt="Gym Management System" class="project-image">
-    </div>
+            <img src="images/invoice.jpg" alt="Invoice System" class="project-image">
+        </div>
         <h3>Invoice System</h3>
         <p>Automated billing system with GST calculation, PDF generation, and multi-year reporting capabilities.</p>
         <div class="project-tags">
@@ -1009,23 +1121,20 @@
         </div>
     </div>
 
-   <div class="project-card card-hover" data-aos="fade-left">
-    <div class="project-image-container">
-        <img src="images/gym.jpg" alt="Gym Management System" class="project-image">
+    <div class="project-card card-hover" data-aos="fade-left">
+        <div class="project-image-container">
+            <img src="images/gym.jpg" alt="Gym Management System" class="project-image">
+        </div>
+        <h3>Gym Management System</h3>
+        <p>Comprehensive gym management solution for tracking memberships, attendance, workout schedules, trainer assignments, billing, and reporting.</p>
+        <div class="project-tags">
+            <span>ASP.NET</span>
+            <span>C#</span>
+            <span>SQL Server</span>
+            <span>Bootstrap</span>
+            <span>JavaScript</span>
+        </div>
     </div>
-    <h3>Gym Management System</h3>
-    <p>Comprehensive gym management solution for tracking memberships, attendance, workout schedules, trainer assignments, billing, and reporting. Includes user-friendly dashboards and automated notifications.</p>
-    <div class="project-tags">
-        <span>ASP.NET</span>
-        <span>C#</span>
-        <span>SQL Server</span>
-        <span>Bootstrap</span>
-        <span>JavaScript</span>
-    </div>
-</div>
-
-</div>
-
 </div>
 
 <!-- CONTACT -->
@@ -1041,7 +1150,6 @@
             <i class="fas fa-phone"></i>
             <h3>Phone</h3>
             <p>+91 6353566300</p>
-
         </div>
         <div class="contact-card card-hover" data-aos="fade-right" data-aos-delay="200">
             <i class="fas fa-map-marker-alt"></i>
@@ -1073,7 +1181,7 @@
         <p class="copyright">© 2023 Devendra Odiya. All Rights Reserved.</p>
     </div>
 </footer>
-
+</header>
 <!-- AOS JS -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
@@ -1149,18 +1257,45 @@
     }
 </script>
 
-<!-- SCROLL ANIMATIONS -->
+<!-- MOBILE NAVIGATION -->
 <script>
-    // Add scroll animations to elements
-    window.addEventListener('scroll', function() {
-        const elements = document.querySelectorAll('.card-hover');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
         
-        elements.forEach(element => {
-            const position = element.getBoundingClientRect();
+        // Change icon
+        const icon = navToggle.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.className = 'fas fa-times';
+        } else {
+            icon.className = 'fas fa-bars';
+        }
+    });
+</script>
+
+<!-- SMOOTH SCROLL -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
             
-            // If element is in viewport
-            if(position.top < window.innerHeight && position.bottom >= 0) {
-                element.classList.add('fadeInUp');
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    navToggle.querySelector('i').className = 'fas fa-bars';
+                }
             }
         });
     });
