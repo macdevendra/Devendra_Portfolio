@@ -358,29 +358,43 @@
         }
 
         /* SECTION TITLE */
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 80px 0 40px;
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(123, 104, 238, 0.5);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        /* SECTION TITLE */
+.section-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* scales with screen width */
+    text-align: center;
+    margin: 60px 0 30px;
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(123, 104, 238, 0.5);
+    position: relative;
+    display: inline-block; /* stays inline for ::after underline */
+}
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
+/* Underline effect */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* smaller width on small screens */
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+/* Optional: Responsive timeline items */
+.timeline-item {
+    margin-bottom: 40px;
+}
+
+.timeline-item h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.timeline-item p {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
 
         /* ABOUT */
         .about-container {
@@ -977,6 +991,8 @@
                 width: 100%;
             }
         }
+
+
     </style>
 </head>
 
@@ -1000,9 +1016,7 @@
             <li><a href="#contact" data-aos="zoom-in">Contact</a></li>
         </ul>
 
-        <button class="toggle-btn" onclick="toggleMode()">
-            <i class="fas fa-moon"></i> Light/Dark
-        </button>
+       
     </nav>
 
     <!-- HERO -->
@@ -1015,7 +1029,7 @@
             <h1 data-aos="fade-up">Hello, I'm <span class="typing"></span></h1>
             <p data-aos="fade-up">ASP.NET Developer | 1 Year Experience</p>
 
-            <a href="document/Devendra Resume .pdf" download class="btn btn-animated" data-aos="zoom-in">Download Resume</a>
+            <a href="document/Devendra Resume .pdf" target="_blank"class="btn btn-animated" data-aos="zoom-in"> View Resume</a>
 
             <div class="social" data-aos="fade-up">
                 <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -1027,160 +1041,170 @@
 
 
 <!-- ABOUT -->
-<h2 id="about" class="section-title" data-aos="fade-up">About Me</h2>
-<div class="about-container">
-    <div class="about-text" data-aos="fade-right">
-        <p>I am Devendra Odiya, an ASP.NET Developer with 1 year of experience specializing in building robust web applications. My expertise includes developing School ERP systems, Invoice Management Systems, and GM Factory Systems using SQL Server & MySQL.</p>
-        <p>I'm passionate about creating efficient, scalable solutions that solve real-world problems. My approach combines technical expertise with a focus on user experience and business requirements.</p>
-    </div>
-    <div class="about-image" data-aos="fade-left">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Coding">
-    </div>
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <h2 id="about" class="section-title" data-aos="fade-up">About Me</h2>
+
+        <div class="about-container">
+            <div class="about-text" data-aos="fade-right">
+                <p>I am Devendra Odiya, an ASP.NET Developer with 1 year of experience specializing in building robust web applications. My expertise includes developing School ERP systems, Invoice Management Systems, and GM Factory Systems using SQL Server & MySQL.</p>
+                <p>I'm passionate about creating efficient, scalable solutions that solve real-world problems. My approach combines technical expertise with a focus on user experience and business requirements.</p>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Coding">
+            </div>
+        </div>
 </div>
 
 <!-- EDUCATION -->
-<h2 class="section-title" data-aos="fade-up">Education & Experience</h2>
-<div class="timeline">
-    <div class="timeline-item" data-aos="fade-right">
-        <h3>BCA - Bachelor in Computer Application</h3>
-        <p>2020 - 2023</p>
-        <p>Graduated with honors, focusing on software development and database management.</p>
-    </div>
-    <div class="timeline-item" data-aos="fade-right">
-        <h3>MCA - Master in Computer Application</h3>
-        <p>2023 - 2025</p>
-        <p>Specialized in advanced software development, cloud computing, and enterprise applications.</p>
-    </div>
-
-    <div class="timeline-item" data-aos="fade-left">
-        <h3>ASP.NET Developer</h3>
-        <p>1 Year Experience</p>
-        <p>Developed and maintained multiple enterprise applications using ASP.NET MVC, C#, and SQL Server.</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <h2 class="section-title" data-aos="fade-up">Education & Experience</h2>
+    <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+            <h3>BCA - Bachelor in Computer Application</h3>
+            <p>2020 - 2023</p>
+            <p>Graduated with honors, focusing on software development and database management.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-right">
+            <h3>MCA - Master in Computer Application</h3>
+            <p>2023 - 2025</p>
+            <p>Specialized in advanced software development, cloud computing, and enterprise applications.</p>
+        </div>
+        <div class="timeline-item" data-aos="fade-left">
+            <h3>ASP.NET Developer</h3>
+            <p>1 Year Experience</p>
+            <p>Developed and maintained multiple enterprise applications using ASP.NET MVC, C#, and SQL Server.</p>
+        </div>
     </div>
 </div>
+
 
 <!-- SKILLS -->
-<h2 id="skills" class="section-title" data-aos="fade-up">Skills</h2>
-<div class="skills-container">
-    <div class="skills-grid">
-        <div class="skill-card card-hover" data-aos="zoom-in">
-            <i class="fab fa-microsoft"></i>
-            <h3>ASP.NET MVC</h3>
+<div style="display: flex; flex-direction: column; align-items: center;">
+        <h2 id="skills" class="section-title" data-aos="fade-up">Skills</h2>
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-card card-hover" data-aos="zoom-in">
+                    <i class="fab fa-microsoft"></i>
+                    <h3>ASP.NET MVC</h3>
+                </div>
+                <div class="skill-card card-hover" data-aos="zoom-in">
+                    <i class="fas fa-code"></i>
+                    <h3>C#</h3>
+                </div>
+                <div class="skill-card card-hover" data-aos="zoom-in">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL Server</h3>
+                </div>
+                <div class="skill-card card-hover" data-aos="zoom-in">
+                    <i class="fas fa-database"></i>
+                    <h3>MySQL</h3>
+                </div>
+                <div class="skill-card card-hover" data-aos="zoom-in">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card card-hover" data-aos="zoom-in">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML & CSS</h3>
+                </div>
+            </div>
         </div>
-        <div class="skill-card card-hover" data-aos="zoom-in">
-            <i class="fas fa-code"></i>
-            <h3>C#</h3>
-        </div>
-        <div class="skill-card card-hover" data-aos="zoom-in">
-            <i class="fas fa-database"></i>
-            <h3>SQL Server</h3>
-        </div>
-        <div class="skill-card card-hover" data-aos="zoom-in">
-            <i class="fas fa-database"></i>
-            <h3>MySQL</h3>
-        </div>
-        <div class="skill-card card-hover" data-aos="zoom-in">
-            <i class="fab fa-js-square"></i>
-            <h3>JavaScript</h3>
-        </div>
-        <div class="skill-card card-hover" data-aos="zoom-in">
-            <i class="fab fa-html5"></i>
-            <h3>HTML & CSS</h3>
-        </div>
-    </div>
 </div>
-
 <!-- PROJECTS -->
-<h2 id="projects" class="section-title" data-aos="fade-up">Projects</h2>
-<div class="project-container">
-    <div class="project-card card-hover" data-aos="fade-right">
-        <div class="project-image-container">
-            <img src="images/school.jpg" alt="School ERP" class="project-image">
-        </div>
-        <h3>School ERP</h3>
-        <p>A comprehensive School Management System handling student data, fees, attendance, reports, and dashboard analytics.</p>
-        <div class="project-tags">
-            <span>ASP.NET</span>
-            <span>C#</span>
-            <span>SQL Server</span>
-            <span>JavaScript</span>
-        </div>
-    </div>
+<div style="display: flex; flex-direction: column; align-items: center;">
+        <h2 id="projects" class="section-title" data-aos="fade-up">Projects</h2>
+        <div class="project-container">
+            <div class="project-card card-hover" data-aos="fade-right">
+                <div class="project-image-container">
+                    <img src="images/school.jpg" alt="School ERP" class="project-image">
+                </div>
+                <h3>School ERP</h3>
+                <p>A comprehensive School Management System handling student data, fees, attendance, reports, and dashboard analytics.</p>
+                <div class="project-tags">
+                    <span>ASP.NET</span>
+                    <span>C#</span>
+                    <span>SQL Server</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
 
-    <div class="project-card card-hover" data-aos="fade-up">
-        <div class="project-image-container">
-            <img src="images/invoice.jpg" alt="Invoice System" class="project-image">
-        </div>
-        <h3>Invoice System</h3>
-        <p>Automated billing system with GST calculation, PDF generation, and multi-year reporting capabilities.</p>
-        <div class="project-tags">
-            <span>ASP.NET MVC</span>
-            <span>Entity Framework</span>
-            <span>MySQL</span>
-            <span>Bootstrap</span>
-        </div>
-    </div>
+            <div class="project-card card-hover" data-aos="fade-up">
+                <div class="project-image-container">
+                    <img src="images/invoice.jpg" alt="Invoice System" class="project-image">
+                </div>
+                <h3>Invoice System</h3>
+                <p>Automated billing system with GST calculation, PDF generation, and multi-year reporting capabilities.</p>
+                <div class="project-tags">
+                    <span>ASP.NET MVC</span>
+                    <span>Entity Framework</span>
+                    <span>MySQL</span>
+                    <span>Bootstrap</span>
+                </div>
+            </div>
 
-    <div class="project-card card-hover" data-aos="fade-left">
-        <div class="project-image-container">
-            <img src="images/gym.jpg" alt="Gym Management System" class="project-image">
+            <div class="project-card card-hover" data-aos="fade-left">
+                <div class="project-image-container">
+                    <img src="images/gym.jpg" alt="Gym Management System" class="project-image">
+                </div>
+                <h3>Gym Management System</h3>
+                <p>Comprehensive gym management solution for tracking memberships, attendance, workout schedules, trainer assignments, billing, and reporting.</p>
+                <div class="project-tags">
+                    <span>ASP.NET</span>
+                    <span>C#</span>
+                    <span>SQL Server</span>
+                    <span>Bootstrap</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
         </div>
-        <h3>Gym Management System</h3>
-        <p>Comprehensive gym management solution for tracking memberships, attendance, workout schedules, trainer assignments, billing, and reporting.</p>
-        <div class="project-tags">
-            <span>ASP.NET</span>
-            <span>C#</span>
-            <span>SQL Server</span>
-            <span>Bootstrap</span>
-            <span>JavaScript</span>
-        </div>
-    </div>
 </div>
 
 <!-- CONTACT -->
-<h2 id="contact" class="section-title" data-aos="fade-up">Contact Me</h2>
-<div class="contact-container">
-    <div class="contact-info">
-        <div class="contact-card card-hover" data-aos="fade-right">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p>devendraodiya6198@gmail.com</p>
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <h2 id="contact" class="section-title" data-aos="fade-up">Contact Me</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-card card-hover" data-aos="fade-right">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>devendraodiya6198@gmail.com</p>
+            </div>
+            <div class="contact-card card-hover" data-aos="fade-right" data-aos-delay="100">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+91 6353566300</p>
+            </div>
+            <div class="contact-card card-hover" data-aos="fade-right" data-aos-delay="200">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Ahmedabad / India</p>
+            </div>
         </div>
-        <div class="contact-card card-hover" data-aos="fade-right" data-aos-delay="100">
-            <i class="fas fa-phone"></i>
-            <h3>Phone</h3>
-            <p>+91 6353566300</p>
-        </div>
-        <div class="contact-card card-hover" data-aos="fade-right" data-aos-delay="200">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>Location</h3>
-            <p>Ahmedabad / India</p>
-        </div>
+        
+        <form class="contact-form" data-aos="zoom-in">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="text" placeholder="Subject">
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button class="btn btn-animated">Send Message</button>
+        </form>
     </div>
-    
-    <form class="contact-form" data-aos="zoom-in">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <input type="text" placeholder="Subject">
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button class="btn btn-animated">Send Message</button>
-    </form>
 </div>
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-content">
-        <h2 class="footer-logo">Devendra Odiya</h2>
-        <p>ASP.NET Developer | Building Digital Solutions</p>
-        <div class="footer-social">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h2 class="footer-logo">Devendra Odiya</h2>
+            <p>ASP.NET Developer | Building Digital Solutions</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">© 2023 Devendra Odiya. All Rights Reserved.</p>
         </div>
-        <p class="copyright">© 2023 Devendra Odiya. All Rights Reserved.</p>
-    </div>
-</footer>
+    </footer>
+
 </header>
 <!-- AOS JS -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
