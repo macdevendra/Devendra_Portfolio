@@ -1179,19 +1179,13 @@
             </div>
         </div>
         
-     <form class="contact-form"
-      action="https://formsubmit.co/devendraodiya6198@gmail.com"
-      method="POST"
-      data-aos="zoom-in">
+     <form id="contactForm" class="contact-form" data-aos="zoom-in">
 
     <!-- Disable CAPTCHA -->
     <input type="hidden" name="_captcha" value="false">
 
     <!-- Email template format -->
     <input type="hidden" name="_template" value="table">
-
-    <!-- After submit redirect (optional but recommended) -->
-    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
 
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
@@ -1200,6 +1194,14 @@
 
     <button type="submit" class="btn btn-animated">Send Message</button>
 </form>
+
+<!-- Popup Message -->
+<div id="popupMessage"
+     style="display:none; background:#7b68ee; color:white; padding:15px; 
+            margin-top:20px; border-radius:10px; text-align:center;">
+    ✅ Your message has been successfully sent to Devendra!
+</div>
+
 
 
     </div>
@@ -1312,7 +1314,33 @@
         }
     });
 </script>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // stop page reload
 
+    let formData = new FormData(this);
+
+    fetch("https://formsubmit.co/devendraodiya6198@gmail.com", {
+        method: "POST",
+        body: formData
+    })
+    .then(() => {
+        // Show popup
+        document.getElementById("popupMessage").style.display = "block";
+
+        // Clear the form
+        document.getElementById("contactForm").reset();
+
+        // Hide popup after 4 seconds
+        setTimeout(() => {
+            document.getElementById("popupMessage").style.display = "none";
+        }, 4000);
+    })
+    .catch(() => {
+        alert("❌ Error sending message. Please try again.");
+    });
+});
+</script>
 <!-- SMOOTH SCROLL -->
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
