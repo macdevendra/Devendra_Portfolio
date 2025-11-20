@@ -40,6 +40,33 @@
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --box-shadow-hover: 0 15px 40px rgba(123, 104, 238, 0.2);
         }
+            /* Full-page overlay for center positioning */
+    #popupMessage {
+        display: none; /* hidden by default */
+        position: fixed; /* stay in center even on scroll */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* perfect centering */
+        background-color: #7b68ee;
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        z-index: 9999; /* on top of everything */
+        animation: fadeInOut 3s forwards; /* optional fade animation */
+    }
+
+    /* Smooth fade-in and fade-out */
+    @keyframes fadeInOut {
+        0% { opacity: 0; transform: translate(-50%, -60%); }
+        10% { opacity: 1; transform: translate(-50%, -50%); }
+        90% { opacity: 1; transform: translate(-50%, -50%); }
+        100% { opacity: 0; transform: translate(-50%, -60%); }
+    }
+
 
         body {
             background: var(--dark);
@@ -1025,15 +1052,20 @@
             
 
             <h1 data-aos="fade-up">Hello, I'm <span class="typing"></span></h1>
-            <p data-aos="fade-up">ASP.NET Developer | 1 Year Experience</p>
+<p data-aos="fade-up">ASP.NET Developer | Building Modern and Scalable Web Applications</p>
 
             <a href="document/Devendra Resume .pdf" target="_blank"class="btn btn-animated" data-aos="zoom-in"> View Resume</a>
 
-            <div class="social" data-aos="fade-up">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+           <div class="social" data-aos="fade-up">
+    <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQF2HykuyFFRQQAAAZqgnYhw4djqxh_30CQfywTtkl3FQXJeFmNJE-0a-V39pi-jkPLSfs80bz93MtUjaEgFENS5GxKLMVEcCOpzSSSh7IrpO1y4c_YgFGvRB6ssAspen45Atn0=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fdevendra-odiya-947492220%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/devendra_odiya/?igsh=am5ubWg2MTBvaTB5&utm_source=qr#" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+    </a>
+</div>
+
         </div>
     </section>
 
@@ -1044,7 +1076,7 @@
 
         <div class="about-container">
             <div class="about-text" data-aos="fade-right">
-                <p>I am Devendra Odiya, an ASP.NET Developer with 1 year of experience specializing in building robust web applications. My expertise includes developing School ERP systems, Invoice Management Systems, and GM Factory Systems using SQL Server & MySQL.</p>
+                <p>I am Devendra Odiya, an ASP.NET Developer with 1 year of experience specializing in building robust web applications. My expertise includes developing School ERP systems, Invoice Management Systems, and Gym Management System using MySQL Server & SQL Server.</p>
                 <p>I'm passionate about creating efficient, scalable solutions that solve real-world problems. My approach combines technical expertise with a focus on user experience and business requirements.</p>
             </div>
             <div class="about-image" data-aos="fade-left">
@@ -1067,11 +1099,11 @@
             <p>2023 - 2025</p>
             <p>Specialized in advanced software development, cloud computing, and enterprise applications.</p>
         </div>
-        <div class="timeline-item" data-aos="fade-left">
-            <h3>ASP.NET Developer</h3>
-            <p>1 Year Experience</p>
-            <p>Developed and maintained multiple enterprise applications using ASP.NET MVC, C#, and SQL Server.</p>
-        </div>
+       <div class="timeline-item" data-aos="fade-left">
+    <h3>ASP.NET Developer</h3>
+    <p>Specialized in building and managing enterprise applications with ASP.NET MVC, C#, and SQL Server, ensuring high performance and reliability.</p>
+</div>
+
     </div>
 </div>
 
@@ -1121,7 +1153,7 @@
                 <div class="project-tags">
                     <span>ASP.NET</span>
                     <span>C#</span>
-                    <span>SQL Server</span>
+                    <span>MySQL Server</span>
                     <span>JavaScript</span>
                 </div>
             </div>
@@ -1196,9 +1228,7 @@
 </form>
 
 <!-- Popup Message -->
-<div id="popupMessage"
-     style="display:none; background:#7b68ee; color:white; padding:15px; 
-            margin-top:20px; border-radius:10px; text-align:center;">
+<div id="popupMessage">
     ✅ Your message has been successfully sent to Devendra!
 </div>
 
@@ -1211,12 +1241,7 @@
         <div class="footer-content">
             <h2 class="footer-logo">Devendra Odiya</h2>
             <p>ASP.NET Developer | Building Digital Solutions</p>
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
+           
             <p class="copyright">© 2023 Devendra Odiya. All Rights Reserved.</p>
         </div>
     </footer>
